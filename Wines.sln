@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wines.Web", "Wines.Web\Wines.Web.csproj", "{A0E5E653-32CB-4F83-B571-6A62FB6CBF85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wines.DataAccess", "Wines.DataAccess\Wines.DataAccess.csproj", "{7AC0A554-9F1C-43EF-8267-425B6F677050}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wines.DaTest", "Wines.DaTest\Wines.DaTest.csproj", "{0F0F3C03-EC15-4CC3-A26F-4798F4B22260}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0E5E653-32CB-4F83-B571-6A62FB6CBF85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0E5E653-32CB-4F83-B571-6A62FB6CBF85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0E5E653-32CB-4F83-B571-6A62FB6CBF85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0E5E653-32CB-4F83-B571-6A62FB6CBF85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC0A554-9F1C-43EF-8267-425B6F677050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC0A554-9F1C-43EF-8267-425B6F677050}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC0A554-9F1C-43EF-8267-425B6F677050}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC0A554-9F1C-43EF-8267-425B6F677050}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F0F3C03-EC15-4CC3-A26F-4798F4B22260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F0F3C03-EC15-4CC3-A26F-4798F4B22260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F0F3C03-EC15-4CC3-A26F-4798F4B22260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F0F3C03-EC15-4CC3-A26F-4798F4B22260}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
