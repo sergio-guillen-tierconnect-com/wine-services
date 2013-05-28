@@ -22,14 +22,14 @@ namespace Wines.DataAccess {
 
                 while (reader.Read()) {
                     item = new Wine();
-                    item.Id = reader.GetInt64(0);
-                    item.Name = reader.GetString(1);
-                    item.Grapes = reader.GetString(2);
-                    item.Country = reader.GetString(3);
-                    item.Region = reader.GetString(4);
-                    item.Year = reader.GetString(5);
-                    item.Description = reader.GetString(6);
-                    item.Picture = reader.IsDBNull(7) ? null : reader.GetString(7);
+                    item.id = reader.GetInt64(0);
+                    item.name = reader.GetString(1);
+                    item.grapes = reader.GetString(2);
+                    item.country = reader.GetString(3);
+                    item.region = reader.GetString(4);
+                    item.year = reader.GetString(5);
+                    item.description = reader.GetString(6);
+                    item.picture = reader.IsDBNull(7) ? null : reader.GetString(7);
 
                     wines.Add(item);
                 }
@@ -56,14 +56,14 @@ namespace Wines.DataAccess {
 
                 while (reader.Read()) {
                     item = new Wine();
-                    item.Id = reader.GetInt64(0);
-                    item.Name = reader.GetString(1);
-                    item.Grapes = reader.GetString(2);
-                    item.Country = reader.GetString(3);
-                    item.Region = reader.GetString(4);
-                    item.Year = reader.GetString(5);
-                    item.Description = reader.GetString(6);
-                    item.Picture = reader.IsDBNull(7) ? null : reader.GetString(7);
+                    item.id = reader.GetInt64(0);
+                    item.name = reader.GetString(1);
+                    item.grapes = reader.GetString(2);
+                    item.country = reader.GetString(3);
+                    item.region = reader.GetString(4);
+                    item.year = reader.GetString(5);
+                    item.description = reader.GetString(6);
+                    item.picture = reader.IsDBNull(7) ? null : reader.GetString(7);
                     break;
                 }
                 reader.Close();
@@ -76,27 +76,29 @@ namespace Wines.DataAccess {
             return item;
         }
 
-        public int Insert(Wine wine) {
+        public Wine Insert(Wine wine) {
             MySqlConnection conn = new MySqlConnection(connectionString);
-            int rowsAffected = -1;
+            Wine result = null;
             try {
                 conn.Open();
                 string sql = @"insert into wine(winename, grapes, country, region, year, description, picture)
                                values(@name, @grapes, @country, @region, @year, @description, @picture)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("name", wine.Name);
-                cmd.Parameters.AddWithValue("grapes", wine.Grapes);
-                cmd.Parameters.AddWithValue("country", wine.Country);
-                cmd.Parameters.AddWithValue("region", wine.Region);
-                cmd.Parameters.AddWithValue("year", wine.Year);
-                cmd.Parameters.AddWithValue("description", wine.Description);
-                cmd.Parameters.AddWithValue("picture", wine.Picture);
+                cmd.Parameters.AddWithValue("name", wine.name);
+                cmd.Parameters.AddWithValue("grapes", wine.grapes);
+                cmd.Parameters.AddWithValue("country", wine.country);
+                cmd.Parameters.AddWithValue("region", wine.region);
+                cmd.Parameters.AddWithValue("year", wine.year);
+                cmd.Parameters.AddWithValue("description", wine.description);
+                cmd.Parameters.AddWithValue("picture", wine.picture);
 
-                rowsAffected = cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
+                wine.id = cmd.LastInsertedId;
+                result = wine;
             } catch (Exception) { } finally {
                 conn.Close();
             }
-            return rowsAffected;
+            return wine;
         }
 
         public int Update(Wine wine) {
@@ -115,14 +117,14 @@ namespace Wines.DataAccess {
                                picture = @picture
                                where id=@id";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("id", wine.Id);
-                cmd.Parameters.AddWithValue("name", wine.Name);
-                cmd.Parameters.AddWithValue("grapes", wine.Grapes);
-                cmd.Parameters.AddWithValue("country", wine.Country);
-                cmd.Parameters.AddWithValue("region", wine.Region);
-                cmd.Parameters.AddWithValue("year", wine.Year);
-                cmd.Parameters.AddWithValue("description", wine.Description);
-                cmd.Parameters.AddWithValue("picture", wine.Picture);
+                cmd.Parameters.AddWithValue("id", wine.id);
+                cmd.Parameters.AddWithValue("name", wine.name);
+                cmd.Parameters.AddWithValue("grapes", wine.grapes);
+                cmd.Parameters.AddWithValue("country", wine.country);
+                cmd.Parameters.AddWithValue("region", wine.region);
+                cmd.Parameters.AddWithValue("year", wine.year);
+                cmd.Parameters.AddWithValue("description", wine.description);
+                cmd.Parameters.AddWithValue("picture", wine.picture);
 
                 rowsAffected = cmd.ExecuteNonQuery();
             } catch (Exception) { } finally {

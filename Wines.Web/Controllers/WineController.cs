@@ -9,12 +9,14 @@ namespace Wines.Web.Controllers {
     public class WineController : Controller {
         [HttpGet]
         public JsonResult Get() {
+            Response.AppendHeader("Access-Control-Allow-Origin", "*");
             WineDa da = new WineDa();
             return Json(da.GetWines(), JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
         public JsonResult GetWine(long id) {
+            Response.AppendHeader("Access-Control-Allow-Origin", "*");
             WineDa da = new WineDa();
             Wine wine = da.GetWine(id);
 
@@ -23,32 +25,24 @@ namespace Wines.Web.Controllers {
 
         [HttpPost]
         public JsonResult Insert(Wine wine) {
+            Response.AppendHeader("Access-Control-Allow-Origin", "*");
             WineDa da = new WineDa();
-            wine.Id = 0;
-            int rows = da.Insert(wine);
+            
+            Wine result = da.Insert(wine);
 
-            int status;
-            string message;
-            if (rows >= 0) {
-                status = 200;
-                message = "inserted";
-            } else {
-                Response.Status = "400";
-                status = 400;
-                message = "error";
-            }
-            return Json(new { Status = status, Message = message });
+            return Json(result);
         }
 
         [HttpPut]
         public JsonResult Update(long wineId, Wine wine) {
+            Response.AppendHeader("Access-Control-Allow-Origin", "*");
             WineDa da = new WineDa();
-            wine.Id = wineId;
+            wine.id = wineId;
             int rows = da.Update(wine);
 
             int status;
             string message;
-            if (rows >= 0) {
+            if (rows > 0) {
                 status = 200;
                 message = "updated";
             } else {
@@ -61,6 +55,7 @@ namespace Wines.Web.Controllers {
 
         [HttpDelete]
         public JsonResult Delete(long wineId) {
+            Response.AppendHeader("Access-Control-Allow-Origin", "*");
             WineDa da = new WineDa();
             int rows = da.Delete(wineId);
             

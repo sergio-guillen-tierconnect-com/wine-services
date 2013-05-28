@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Backbone Cellar</title>
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+
+<div id="header"><span class="title"></span></div>
+
+<div id="sidebar">
+    <ul id="wines"></ul>
+</div>
+
+<div id="content">
+<h2>Welcome to Backbasone Cellar</h2>
+<p>
+This is a sample application part of of three-part tutorial showing how to build a CRUD application with Backbone.js.
+</p>
+</div>
+
+<!-- Templates -->
+<script type="text/template" id="tpl-wine-list-item">
+  <a href='#wines/<%= id %>'><%= name %></a>
+</script>
+
+<script type="text/template" id="tpl-header">
+    <span class="title">Backbone Cellar</span>
+    <button class="new">New Wine</button>
+</script>
+
+<script type="text/template" id="tpl-wine-details">
+    <div class="form-left-col">
+        <label>Id:</label>
+        <input type="text" id="wineId" name="id" value="<%= id %>" disabled />
+        <label>Name:</label>
+        <input type="text" id="name" name="name" value="<%= name %>" required/>
+        <label>Grapes:</label>
+        <input type="text" id="grapes" name="grapes" value="<%= grapes %>"/>
+        <label>Country:</label>
+        <input type="text" id="country" name="country" value="<%= country %>"/>
+        <label>Region:</label>
+        <input type="text" id="region" name="region"  value="<%= region %>"/>
+        <label>Year:</label>
+        <input type="text" id="year" name="year"  value="<%= year %>"/>
+        <button class="save">Save</button>
+        <button class="delete">Delete</button>
+    </div>
+    <div class="form-right-col">
+        <img height="300" src="img/<%= picture %>"/>
+        <label>Notes:</label>
+        <textarea id="description" name="description"><%= description %></textarea>
+    </div>
+</script>
+
+<!-- JavaScript -->
+<script src="js/libs/jquery/jquery-1.8.0.min.js"></script>
+<script src="js/libs/backbone/underscore.js"></script>
+<script src="js/libs/backbone/backbone.js"></script>
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

@@ -23,30 +23,30 @@ namespace Wines.DaTest {
         [TestMethod]
         public void InsertWine() {
             Wine wine = new Wine();
-            wine.Name = "unit test wine";
-            wine.Grapes = "23";
-            wine.Country = "Bolivia";
-            wine.Region = "Sucre";
-            wine.Year = "2013";
-            wine.Description = "No description";
-            wine.Picture = "wine1.png";
+            wine.name = "unit test wine";
+            wine.grapes = "23";
+            wine.country = "Bolivia";
+            wine.region = "Sucre";
+            wine.year = "2013";
+            wine.description = "No description";
+            wine.picture = "wine1.png";
 
             WineDa da = new WineDa();
-            int rowsAffected = da.Insert(wine);
-            Assert.IsTrue(rowsAffected >= 0);
+            Wine result = da.Insert(wine);
+            Assert.IsTrue(result != null);
         }
 
         [TestMethod]
         public void UpdateWine() {
             Wine wine = new Wine();
-            wine.Id = 4;
-            wine.Name = "unit test wine";
-            wine.Grapes = "23";
-            wine.Country = "Bolivia";
-            wine.Region = "Bermejo";
-            wine.Year = "2013";
-            wine.Description = "No description";
-            wine.Picture = "wine2.png";
+            wine.id = 4;
+            wine.name = "unit test wine";
+            wine.grapes = "23";
+            wine.country = "Bolivia";
+            wine.region = "Bermejo";
+            wine.year = "2013";
+            wine.description = "No description";
+            wine.picture = "wine2.png";
 
             WineDa da = new WineDa();
             int rowsAffected = da.Update(wine);
