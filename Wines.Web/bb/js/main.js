@@ -134,6 +134,7 @@ window.WineView = Backbone.View.extend({
           //app.navigate('', false);
           if (app.wineView) {
             app.wineView.close();
+            app.navigate('', false);
           }
         }
       });
